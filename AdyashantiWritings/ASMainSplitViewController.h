@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol ASMainSplitViewControllerDelegate <NSObject>
+
+- (void)goToPageSomething;
+
+@end
+
 @interface ASMainSplitViewController : UISplitViewController
 
 @end

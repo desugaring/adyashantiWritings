@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		4F89B39F1B13CB91002E0840 /* ASMainSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F89B39E1B13CB91002E0840 /* ASMainSplitViewController.m */; };
+		4F89B3A21B13CCEE002E0840 /* ASDetailNavigationBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F89B3A11B13CCEE002E0840 /* ASDetailNavigationBarViewController.m */; };
+		4F89B3A51B13CEEF002E0840 /* ASAdBannerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F89B3A41B13CEEF002E0840 /* ASAdBannerViewController.m */; };
+		4F89B3A81B13D047002E0840 /* ASThemeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F89B3A71B13D047002E0840 /* ASThemeManager.m */; };
 		4FEEE5151B12BD2A007D42C1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FEEE5141B12BD2A007D42C1 /* main.m */; };
 		4FEEE5181B12BD2A007D42C1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FEEE5171B12BD2A007D42C1 /* AppDelegate.m */; };
 		4FEEE51B1B12BD2A007D42C1 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FEEE51A1B12BD2A007D42C1 /* ViewController.m */; };
@@ -20,6 +23,12 @@
 /* Begin PBXFileReference section */
 		4F89B39D1B13CB91002E0840 /* ASMainSplitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASMainSplitViewController.h; sourceTree = "<group>"; };
 		4F89B39E1B13CB91002E0840 /* ASMainSplitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASMainSplitViewController.m; sourceTree = "<group>"; };
+		4F89B3A01B13CCEE002E0840 /* ASDetailNavigationBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASDetailNavigationBarViewController.h; sourceTree = "<group>"; };
+		4F89B3A11B13CCEE002E0840 /* ASDetailNavigationBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASDetailNavigationBarViewController.m; sourceTree = "<group>"; };
+		4F89B3A31B13CEEF002E0840 /* ASAdBannerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASAdBannerViewController.h; sourceTree = "<group>"; };
+		4F89B3A41B13CEEF002E0840 /* ASAdBannerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASAdBannerViewController.m; sourceTree = "<group>"; };
+		4F89B3A61B13D047002E0840 /* ASThemeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASThemeManager.h; sourceTree = "<group>"; };
+		4F89B3A71B13D047002E0840 /* ASThemeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASThemeManager.m; sourceTree = "<group>"; };
 		4FEEE50F1B12BD2A007D42C1 /* AdyashantiWritings.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AdyashantiWritings.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FEEE5131B12BD2A007D42C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4FEEE5141B12BD2A007D42C1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -70,8 +79,12 @@
 				4FEEE51A1B12BD2A007D42C1 /* ViewController.m */,
 				4F89B39D1B13CB91002E0840 /* ASMainSplitViewController.h */,
 				4F89B39E1B13CB91002E0840 /* ASMainSplitViewController.m */,
-				4FEEE51F1B12BD2B007D42C1 /* Images.xcassets */,
-				4FEEE5211B12BD2B007D42C1 /* LaunchScreen.xib */,
+				4F89B3A01B13CCEE002E0840 /* ASDetailNavigationBarViewController.h */,
+				4F89B3A11B13CCEE002E0840 /* ASDetailNavigationBarViewController.m */,
+				4F89B3A31B13CEEF002E0840 /* ASAdBannerViewController.h */,
+				4F89B3A41B13CEEF002E0840 /* ASAdBannerViewController.m */,
+				4F89B3A61B13D047002E0840 /* ASThemeManager.h */,
+				4F89B3A71B13D047002E0840 /* ASThemeManager.m */,
 				4FEEE5121B12BD2A007D42C1 /* Supporting Files */,
 			);
 			path = AdyashantiWritings;
@@ -81,9 +94,11 @@
 			isa = PBXGroup;
 			children = (
 				4FEEE51C1B12BD2B007D42C1 /* Main.storyboard */,
-				4FEEE5381B12C0A4007D42C1 /* StoreKit.framework */,
 				4FEEE5131B12BD2A007D42C1 /* Info.plist */,
 				4FEEE5141B12BD2A007D42C1 /* main.m */,
+				4FEEE51F1B12BD2B007D42C1 /* Images.xcassets */,
+				4FEEE5211B12BD2B007D42C1 /* LaunchScreen.xib */,
+				4FEEE5381B12C0A4007D42C1 /* StoreKit.framework */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -167,6 +182,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F89B3A81B13D047002E0840 /* ASThemeManager.m in Sources */,
+				4F89B3A21B13CCEE002E0840 /* ASDetailNavigationBarViewController.m in Sources */,
+				4F89B3A51B13CEEF002E0840 /* ASAdBannerViewController.m in Sources */,
 				4FEEE51B1B12BD2A007D42C1 /* ViewController.m in Sources */,
 				4FEEE5181B12BD2A007D42C1 /* AppDelegate.m in Sources */,
 				4F89B39F1B13CB91002E0840 /* ASMainSplitViewController.m in Sources */,
