@@ -7,13 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4F3F8B371B15274000E82580 /* TODO in Resources */ = {isa = PBXBuildFile; fileRef = 4F3F8B361B15274000E82580 /* TODO */; };
+		4F3F8B3A1B16824200E82580 /* NSString+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F3F8B391B16824200E82580 /* NSString+MD5.m */; };
+		4F3F8B3D1B1688AF00E82580 /* ASModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F3F8B3C1B1688AF00E82580 /* ASModel.m */; };
+		4F3F8B421B169E7300E82580 /* ASArticle.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F3F8B411B169E7300E82580 /* ASArticle.m */; };
 		4F89B39F1B13CB91002E0840 /* ASMainSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F89B39E1B13CB91002E0840 /* ASMainSplitViewController.m */; };
 		4F89B3A21B13CCEE002E0840 /* ASDetailNavigationBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F89B3A11B13CCEE002E0840 /* ASDetailNavigationBarViewController.m */; };
 		4F89B3A51B13CEEF002E0840 /* ASAdBannerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F89B3A41B13CEEF002E0840 /* ASAdBannerViewController.m */; };
 		4F89B3A81B13D047002E0840 /* ASThemeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F89B3A71B13D047002E0840 /* ASThemeManager.m */; };
+		4F89B3AA1B13EE97002E0840 /* HTML in Resources */ = {isa = PBXBuildFile; fileRef = 4F89B3A91B13EE97002E0840 /* HTML */; };
+		4F89B3AD1B13EF14002E0840 /* ASArticleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F89B3AC1B13EF14002E0840 /* ASArticleViewController.m */; };
+		4F89B3B01B14FF1F002E0840 /* ASArticlesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F89B3AF1B14FF1F002E0840 /* ASArticlesTableViewController.m */; };
 		4FEEE5151B12BD2A007D42C1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FEEE5141B12BD2A007D42C1 /* main.m */; };
 		4FEEE5181B12BD2A007D42C1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FEEE5171B12BD2A007D42C1 /* AppDelegate.m */; };
-		4FEEE51B1B12BD2A007D42C1 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FEEE51A1B12BD2A007D42C1 /* ViewController.m */; };
 		4FEEE51E1B12BD2B007D42C1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4FEEE51C1B12BD2B007D42C1 /* Main.storyboard */; };
 		4FEEE5201B12BD2B007D42C1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4FEEE51F1B12BD2B007D42C1 /* Images.xcassets */; };
 		4FEEE5231B12BD2B007D42C1 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FEEE5211B12BD2B007D42C1 /* LaunchScreen.xib */; };
@@ -21,6 +27,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4F3F8B361B15274000E82580 /* TODO */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = TODO; path = AdyashantiWritings/TODO; sourceTree = "<group>"; };
+		4F3F8B381B16824200E82580 /* NSString+MD5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MD5.h"; sourceTree = "<group>"; };
+		4F3F8B391B16824200E82580 /* NSString+MD5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MD5.m"; sourceTree = "<group>"; };
+		4F3F8B3B1B1688AF00E82580 /* ASModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASModel.h; sourceTree = "<group>"; };
+		4F3F8B3C1B1688AF00E82580 /* ASModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASModel.m; sourceTree = "<group>"; };
+		4F3F8B401B169E7300E82580 /* ASArticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASArticle.h; sourceTree = "<group>"; };
+		4F3F8B411B169E7300E82580 /* ASArticle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASArticle.m; sourceTree = "<group>"; };
 		4F89B39D1B13CB91002E0840 /* ASMainSplitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASMainSplitViewController.h; sourceTree = "<group>"; };
 		4F89B39E1B13CB91002E0840 /* ASMainSplitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASMainSplitViewController.m; sourceTree = "<group>"; };
 		4F89B3A01B13CCEE002E0840 /* ASDetailNavigationBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASDetailNavigationBarViewController.h; sourceTree = "<group>"; };
@@ -29,13 +42,16 @@
 		4F89B3A41B13CEEF002E0840 /* ASAdBannerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASAdBannerViewController.m; sourceTree = "<group>"; };
 		4F89B3A61B13D047002E0840 /* ASThemeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASThemeManager.h; sourceTree = "<group>"; };
 		4F89B3A71B13D047002E0840 /* ASThemeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASThemeManager.m; sourceTree = "<group>"; };
+		4F89B3A91B13EE97002E0840 /* HTML */ = {isa = PBXFileReference; lastKnownFileType = folder; path = HTML; sourceTree = "<group>"; };
+		4F89B3AB1B13EF14002E0840 /* ASArticleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASArticleViewController.h; sourceTree = "<group>"; };
+		4F89B3AC1B13EF14002E0840 /* ASArticleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASArticleViewController.m; sourceTree = "<group>"; };
+		4F89B3AE1B14FF1F002E0840 /* ASArticlesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASArticlesTableViewController.h; sourceTree = "<group>"; };
+		4F89B3AF1B14FF1F002E0840 /* ASArticlesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASArticlesTableViewController.m; sourceTree = "<group>"; };
 		4FEEE50F1B12BD2A007D42C1 /* AdyashantiWritings.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AdyashantiWritings.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FEEE5131B12BD2A007D42C1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4FEEE5141B12BD2A007D42C1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4FEEE5161B12BD2A007D42C1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		4FEEE5171B12BD2A007D42C1 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		4FEEE5191B12BD2A007D42C1 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		4FEEE51A1B12BD2A007D42C1 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		4FEEE51D1B12BD2B007D42C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4FEEE51F1B12BD2B007D42C1 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		4FEEE5221B12BD2B007D42C1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -54,10 +70,91 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4F3F8B3E1B1688B200E82580 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4F3F8B3B1B1688AF00E82580 /* ASModel.h */,
+				4F3F8B3C1B1688AF00E82580 /* ASModel.m */,
+				4F3F8B431B169E7600E82580 /* Helper */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		4F3F8B3F1B1688BA00E82580 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4F89B39D1B13CB91002E0840 /* ASMainSplitViewController.h */,
+				4F89B39E1B13CB91002E0840 /* ASMainSplitViewController.m */,
+				4F89B3B11B14FF26002E0840 /* TableView */,
+				4F89B3AE1B14FF1F002E0840 /* ASArticlesTableViewController.h */,
+				4F89B3AF1B14FF1F002E0840 /* ASArticlesTableViewController.m */,
+				4F89B3B21B14FF32002E0840 /* Detail */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		4F3F8B431B169E7600E82580 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				4F3F8B401B169E7300E82580 /* ASArticle.h */,
+				4F3F8B411B169E7300E82580 /* ASArticle.m */,
+			);
+			name = Helper;
+			sourceTree = "<group>";
+		};
+		4F89B3B11B14FF26002E0840 /* TableView */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = TableView;
+			sourceTree = "<group>";
+		};
+		4F89B3B21B14FF32002E0840 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				4F89B3AB1B13EF14002E0840 /* ASArticleViewController.h */,
+				4F89B3AC1B13EF14002E0840 /* ASArticleViewController.m */,
+				4F89B3B51B14FF77002E0840 /* AdBanner */,
+				4F89B3B41B14FF70002E0840 /* NavBar */,
+			);
+			name = Detail;
+			sourceTree = "<group>";
+		};
+		4F89B3B31B14FF51002E0840 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				4F89B3A61B13D047002E0840 /* ASThemeManager.h */,
+				4F89B3A71B13D047002E0840 /* ASThemeManager.m */,
+				4F3F8B381B16824200E82580 /* NSString+MD5.h */,
+				4F3F8B391B16824200E82580 /* NSString+MD5.m */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
+		4F89B3B41B14FF70002E0840 /* NavBar */ = {
+			isa = PBXGroup;
+			children = (
+				4F89B3A01B13CCEE002E0840 /* ASDetailNavigationBarViewController.h */,
+				4F89B3A11B13CCEE002E0840 /* ASDetailNavigationBarViewController.m */,
+			);
+			name = NavBar;
+			sourceTree = "<group>";
+		};
+		4F89B3B51B14FF77002E0840 /* AdBanner */ = {
+			isa = PBXGroup;
+			children = (
+				4F89B3A31B13CEEF002E0840 /* ASAdBannerViewController.h */,
+				4F89B3A41B13CEEF002E0840 /* ASAdBannerViewController.m */,
+			);
+			name = AdBanner;
+			sourceTree = "<group>";
+		};
 		4FEEE5061B12BD2A007D42C1 = {
 			isa = PBXGroup;
 			children = (
+				4F3F8B361B15274000E82580 /* TODO */,
 				4FEEE5111B12BD2A007D42C1 /* AdyashantiWritings */,
+				4F89B3A91B13EE97002E0840 /* HTML */,
 				4FEEE5101B12BD2A007D42C1 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -73,18 +170,9 @@
 		4FEEE5111B12BD2A007D42C1 /* AdyashantiWritings */ = {
 			isa = PBXGroup;
 			children = (
-				4FEEE5161B12BD2A007D42C1 /* AppDelegate.h */,
-				4FEEE5171B12BD2A007D42C1 /* AppDelegate.m */,
-				4FEEE5191B12BD2A007D42C1 /* ViewController.h */,
-				4FEEE51A1B12BD2A007D42C1 /* ViewController.m */,
-				4F89B39D1B13CB91002E0840 /* ASMainSplitViewController.h */,
-				4F89B39E1B13CB91002E0840 /* ASMainSplitViewController.m */,
-				4F89B3A01B13CCEE002E0840 /* ASDetailNavigationBarViewController.h */,
-				4F89B3A11B13CCEE002E0840 /* ASDetailNavigationBarViewController.m */,
-				4F89B3A31B13CEEF002E0840 /* ASAdBannerViewController.h */,
-				4F89B3A41B13CEEF002E0840 /* ASAdBannerViewController.m */,
-				4F89B3A61B13D047002E0840 /* ASThemeManager.h */,
-				4F89B3A71B13D047002E0840 /* ASThemeManager.m */,
+				4F3F8B3E1B1688B200E82580 /* Model */,
+				4F3F8B3F1B1688BA00E82580 /* View */,
+				4F89B3B31B14FF51002E0840 /* Helpers */,
 				4FEEE5121B12BD2A007D42C1 /* Supporting Files */,
 			);
 			path = AdyashantiWritings;
@@ -94,6 +182,8 @@
 			isa = PBXGroup;
 			children = (
 				4FEEE51C1B12BD2B007D42C1 /* Main.storyboard */,
+				4FEEE5161B12BD2A007D42C1 /* AppDelegate.h */,
+				4FEEE5171B12BD2A007D42C1 /* AppDelegate.m */,
 				4FEEE5131B12BD2A007D42C1 /* Info.plist */,
 				4FEEE5141B12BD2A007D42C1 /* main.m */,
 				4FEEE51F1B12BD2B007D42C1 /* Images.xcassets */,
@@ -170,6 +260,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				4FEEE51E1B12BD2B007D42C1 /* Main.storyboard in Resources */,
+				4F3F8B371B15274000E82580 /* TODO in Resources */,
+				4F89B3AA1B13EE97002E0840 /* HTML in Resources */,
 				4FEEE5231B12BD2B007D42C1 /* LaunchScreen.xib in Resources */,
 				4FEEE5201B12BD2B007D42C1 /* Images.xcassets in Resources */,
 			);
@@ -182,11 +274,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F3F8B421B169E7300E82580 /* ASArticle.m in Sources */,
 				4F89B3A81B13D047002E0840 /* ASThemeManager.m in Sources */,
 				4F89B3A21B13CCEE002E0840 /* ASDetailNavigationBarViewController.m in Sources */,
 				4F89B3A51B13CEEF002E0840 /* ASAdBannerViewController.m in Sources */,
-				4FEEE51B1B12BD2A007D42C1 /* ViewController.m in Sources */,
+				4F3F8B3A1B16824200E82580 /* NSString+MD5.m in Sources */,
+				4F89B3AD1B13EF14002E0840 /* ASArticleViewController.m in Sources */,
+				4F3F8B3D1B1688AF00E82580 /* ASModel.m in Sources */,
 				4FEEE5181B12BD2A007D42C1 /* AppDelegate.m in Sources */,
+				4F89B3B01B14FF1F002E0840 /* ASArticlesTableViewController.m in Sources */,
 				4F89B39F1B13CB91002E0840 /* ASMainSplitViewController.m in Sources */,
 				4FEEE5151B12BD2A007D42C1 /* main.m in Sources */,
 			);

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+    <meta name = "viewport" content = "user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0">
+	<title>Adyashanti Writings</title>
+	<style>
+	  html, body {
+	    width: 100%;
+	    height: 100%;
+	    margin: 0;
+	    background-color: #F8FEFB;
+        -webkit-text-size-adjust: none; /* Never autoresize text */
+	  }
+	  body, vbox {
+	  	display: flex;
+	  	display: -webkit-flex;
+	  	-webkit-flex-direction: column;
+	  	-webkit-flex-wrap: nowrap;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        flex: 1 0 auto;
+        -webkit-flex: 1 0 auto;
+	  }
+      p, t {
+        flex: 1 0 auto;
+        -webkit-flex: 1 0 auto;
+      }
+      t {
+        font-size: 24px:
+      }
+    </style>
+</head>
+<body>
+    <vbox id="content"></vbox>
+    <vbox id="footer"></vbox>
+    <script>
+        window.onload = function() {
+            window.webkit.messageHandlers.pageLoaded.postMessage("loaded");
+        };
+    var style = document.styleSheets[document.styleSheets.length-1];
+    var pStyleIndex = style.insertRule("p { font-size: 16px; }", 0);
+    var pStyle = style.cssRules[pStyleIndex].style;
+
+    function increaseFontSize() {
+        var oldSize = parseInt(pStyle.getPropertyValue("font-size"), 10);
+        if (oldSize < 32) {
+            pStyle.setProperty("font-size", (oldSize+2).toString()+"px", "");
+        }
+    }
+    function decreaseFontSize() {
+        var oldSize = parseInt(pStyle.getPropertyValue("font-size"), 10);
+        if (oldSize > 12) {
+            pStyle.setProperty("font-size", (oldSize-1).toString()+"px", "");
+        }
+    }
+    </script>
+</body>
+</html>

@@ -8,6 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol ASDetailNavigationBarDelegate <NSObject>
+
+- (void)navBarActionInvokedWithDictionary:(NSDictionary *)dictionary;
+
+@end
+
 @interface ASDetailNavigationBarViewController : UIViewController
+
+@property (weak) id<ASDetailNavigationBarDelegate> delegate;
 
 @end

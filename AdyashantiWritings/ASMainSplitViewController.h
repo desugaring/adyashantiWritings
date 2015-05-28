@@ -14,6 +14,6 @@
 
 @end
 
-@interface ASMainSplitViewController : UISplitViewController
+@interface ASMainSplitViewController : UISplitViewController <UISplitViewControllerDelegate>
 
 @end

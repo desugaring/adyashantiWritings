@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <iAd/iAd.h>
 
 @interface ASAdBannerViewController : UIViewController
+
+@property ADBannerView *bannerView;
+@property (weak) id<ADBannerViewDelegate> delegate;
 
 @end

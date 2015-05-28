@@ -5,10 +5,10 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Article View Controller-->
         <scene sceneID="fZe-jY-6wd">
             <objects>
-                <viewController id="TzL-z8-6hd" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ArticleVC" id="TzL-z8-6hd" customClass="ASArticleViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="LWu-8n-Bts"/>
                         <viewControllerLayoutGuide type="bottom" id="flG-4v-m0n"/>
@@ -26,43 +26,48 @@
                                     <segue destination="0qb-wQ-Ras" kind="embed" id="9UO-HK-jTR"/>
                                 </connections>
                             </containerView>
-                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uRq-Vj-uVC">
-                                <rect key="frame" x="0.0" y="85" width="375" height="517"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </webView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CWN-Hf-UIe" userLabel="Ad Banner Container View">
-                                <rect key="frame" x="0.0" y="602" width="375" height="65"/>
+                                <rect key="frame" x="0.0" y="667" width="375" height="0.0"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="65" id="6Wo-7x-FSC"/>
+                                    <constraint firstAttribute="height" id="6Wo-7x-FSC"/>
                                 </constraints>
                                 <connections>
                                     <segue destination="gif-mX-1We" kind="embed" id="u0f-M1-Djc"/>
                                 </connections>
+                            </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SxG-6d-XAD" userLabel="WebView Container View">
+                                <rect key="frame" x="0.0" y="85" width="375" height="582"/>
                             </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="flG-4v-m0n" firstAttribute="top" secondItem="CWN-Hf-UIe" secondAttribute="bottom" id="0Gn-s2-BIo"/>
                             <constraint firstItem="uOA-qg-csE" firstAttribute="top" secondItem="LWu-8n-Bts" secondAttribute="bottom" id="I3L-hB-kzR"/>
+                            <constraint firstAttribute="trailing" secondItem="SxG-6d-XAD" secondAttribute="trailing" id="K6B-jG-DI8"/>
+                            <constraint firstItem="SxG-6d-XAD" firstAttribute="leading" secondItem="16u-X3-Bws" secondAttribute="leading" id="O0P-Q0-EJe"/>
                             <constraint firstAttribute="trailing" secondItem="CWN-Hf-UIe" secondAttribute="trailing" id="Py1-W2-Iwx"/>
-                            <constraint firstAttribute="trailing" secondItem="uRq-Vj-uVC" secondAttribute="trailing" id="WqY-jj-c8P"/>
-                            <constraint firstItem="CWN-Hf-UIe" firstAttribute="top" secondItem="uRq-Vj-uVC" secondAttribute="bottom" id="Xkw-gs-vD6"/>
+                            <constraint firstItem="SxG-6d-XAD" firstAttribute="top" secondItem="uOA-qg-csE" secondAttribute="bottom" id="SdU-CC-XCV"/>
+                            <constraint firstItem="CWN-Hf-UIe" firstAttribute="top" secondItem="SxG-6d-XAD" secondAttribute="bottom" id="V3I-sQ-lyo"/>
                             <constraint firstItem="uOA-qg-csE" firstAttribute="leading" secondItem="16u-X3-Bws" secondAttribute="leading" id="Y1h-qs-wAm"/>
-                            <constraint firstItem="uRq-Vj-uVC" firstAttribute="top" secondItem="uOA-qg-csE" secondAttribute="bottom" id="Zse-AJ-Lqp"/>
                             <constraint firstAttribute="trailing" secondItem="uOA-qg-csE" secondAttribute="trailing" id="aSc-Rg-Eom"/>
-                            <constraint firstItem="uRq-Vj-uVC" firstAttribute="leading" secondItem="16u-X3-Bws" secondAttribute="leading" id="cCt-TU-6YQ"/>
                             <constraint firstItem="CWN-Hf-UIe" firstAttribute="leading" secondItem="16u-X3-Bws" secondAttribute="leading" id="i3z-HI-wLo"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="adBannerContainerView" destination="CWN-Hf-UIe" id="ycK-h7-iBN"/>
+                        <outlet property="bannerHeightConstraint" destination="6Wo-7x-FSC" id="sXR-6D-TkN"/>
+                        <outlet property="navigationContainerView" destination="uOA-qg-csE" id="2X7-0c-jVx"/>
+                        <outlet property="webContainerView" destination="SxG-6d-XAD" id="ecr-Aq-PcC"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oh4-EB-ZNF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="142.5" y="724.5"/>
+            <point key="canvasLocation" x="142.5" y="762.5"/>
         </scene>
         <!--Root View Controller-->
         <scene sceneID="HZb-QY-Ync">
             <objects>
-                <tableViewController clearsSelectionOnViewWillAppear="NO" id="5Kl-Y4-enY" sceneMemberID="viewController">
+                <tableViewController clearsSelectionOnViewWillAppear="NO" id="5Kl-Y4-enY" customClass="ASArticlesTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="yZl-EH-oIU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -92,16 +97,16 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N4h-Gm-ILt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="142.5" y="-26.5"/>
+            <point key="canvasLocation" x="142.5" y="20.5"/>
         </scene>
-        <!--Split View Controller-->
+        <!--Main Split View Controller-->
         <scene sceneID="wxE-rs-eIi">
             <objects>
-                <splitViewController id="pqO-sk-pUH" sceneMemberID="viewController">
+                <splitViewController id="pqO-sk-pUH" customClass="ASMainSplitViewController" sceneMemberID="viewController">
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <segue destination="TzL-z8-6hd" kind="relationship" relationship="detailViewController" id="bG7-pQ-OPI"/>
-                        <segue destination="5Kl-Y4-enY" kind="relationship" relationship="masterViewController" id="PZZ-9W-dzS"/>
+                        <segue destination="5Kl-Y4-enY" kind="relationship" relationship="masterViewController" id="9pz-ZL-1fh"/>
                     </connections>
                 </splitViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JUX-d1-SuP" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -121,16 +126,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ic5-Et-63T" userLabel="Back Container View">
-                                <rect key="frame" x="26" y="11" width="54" height="44"/>
+                                <rect key="frame" x="26" y="11" width="46" height="44"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hzi-zx-BDB">
-                                        <rect key="frame" x="0.0" y="0.0" width="54" height="30"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="46" height="30"/>
                                         <state key="normal" title="Button">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="goBack:" destination="0qb-wQ-Ras" eventType="touchUpInside" id="K4x-jW-QXr"/>
+                                        </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TEXT SIZE" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cah-gh-RaI">
-                                        <rect key="frame" x="0.0" y="30" width="55" height="14"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BACK" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cah-gh-RaI">
+                                        <rect key="frame" x="1" y="30" width="45" height="14"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
@@ -155,12 +163,18 @@
                                         <state key="normal" title="Button">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="decreaseFontSize:" destination="0qb-wQ-Ras" eventType="touchUpInside" id="5rY-Q6-Sbl"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BSf-2K-QcE">
                                         <rect key="frame" x="70" y="0.0" width="46" height="30"/>
                                         <state key="normal" title="Button">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="increaseFontSize:" destination="0qb-wQ-Ras" eventType="touchUpInside" id="cro-Qu-79h"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TEXT SIZE" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I8O-WI-2Lx">
                                         <rect key="frame" x="31" y="30" width="55" height="14"/>
@@ -188,6 +202,9 @@
                                         <state key="normal" title="Button">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="changeTheme:" destination="0qb-wQ-Ras" eventType="touchUpInside" id="t5Y-0n-Ax0"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TEXT SIZE" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="To2-SF-xhA">
                                         <rect key="frame" x="0.0" y="30" width="55" height="14"/>
@@ -224,10 +241,10 @@
             </objects>
             <point key="canvasLocation" x="603.5" y="423.5"/>
         </scene>
-        <!--View Controller-->
+        <!--Ad Banner View Controller-->
         <scene sceneID="G2N-UK-uUj">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="gif-mX-1We" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="gif-mX-1We" customClass="ASAdBannerViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="hsk-j6-2SW"/>
                         <viewControllerLayoutGuide type="bottom" id="SJ1-9U-Ut1"/>
@@ -235,14 +252,11 @@
                     <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="ZJz-hb-mDz">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="65"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <adBannerView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zew-Fz-8f6">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
-                            </adBannerView>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <toolbarItems/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="375" height="65"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c6n-Ac-aE0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

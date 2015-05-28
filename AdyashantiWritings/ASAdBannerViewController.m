@@ -8,30 +8,27 @@
 
 #import "ASAdBannerViewController.h"
 
-@interface ASAdBannerViewController ()
-
-@end
-
 @implementation ASAdBannerViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
-}
+    self.bannerView = [[ADBannerView alloc] initWithAdType:ADAdTypeBanner];
+    self.bannerView.delegate = self.delegate;
+    [self.view addSubview:self.bannerView];
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    // Autolayout
+    [self.bannerView setTranslatesAutoresizingMaskIntoConstraints:NO];
+    ADBannerView *bannerView = self.bannerView;
+    [self.view addConstraints:[NSLayoutConstraint
+                                           constraintsWithVisualFormat:@"H:|-0-[bannerView]-0-|"
+                                           options:NSLayoutFormatDirectionLeadingToTrailing
+                                           metrics:nil
+                                           views:NSDictionaryOfVariableBindings(bannerView)]];
+    [self.view addConstraints:[NSLayoutConstraint
+                                           constraintsWithVisualFormat:@"V:|-0-[bannerView]-0-|"
+                                           options:NSLayoutFormatDirectionLeadingToTrailing
+                                           metrics:nil
+                                           views:NSDictionaryOfVariableBindings(bannerView)]];
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
