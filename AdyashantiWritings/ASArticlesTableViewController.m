@@ -50,10 +50,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     ASMainSplitViewController *mainSplitVC = (ASMainSplitViewController *)self.splitViewController;
-    if (self.articleVC == nil) {
-        self.articleVC = (ASArticleViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"ArticleVC"];
-    }
-    [mainSplitVC showDetailViewController:self.articleVC sender:self];
+    [mainSplitVC showArticle:self.articles[indexPath.row]];
 }
 
 

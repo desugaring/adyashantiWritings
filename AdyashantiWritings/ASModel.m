@@ -25,11 +25,17 @@
 
 - (instancetype)init {
     if (self = [super init]) {
+        // Setup html templates
+        _htmlTemplate = [NSString stringWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"template" withExtension:@"html" subdirectory:@"HTML/templates"] encoding:NSUTF8StringEncoding error:nil];
+        _footer = [NSString stringWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"footer" withExtension:@"html" subdirectory:@"HTML/templates"] encoding:NSUTF8StringEncoding error:nil];
+
+        // Setup articles
         NSMutableArray *articles = [NSMutableArray new];
         NSArray *articlesURLs = [[NSBundle mainBundle] URLsForResourcesWithExtension:@"html" subdirectory:@"HTML/articles"];
         for (NSURL *url in articlesURLs) {
             [articles addObject:[[ASArticle alloc] initWithURL:url]];
         }
+        _articles = articles.copy;
     }
     return self;
 }

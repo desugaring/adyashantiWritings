@@ -7,13 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@protocol ASMainSplitViewControllerDelegate <NSObject>
-
-- (void)goToPageSomething;
-
-@end
+#import "ASArticle.h"
 
 @interface ASMainSplitViewController : UISplitViewController <UISplitViewControllerDelegate>
+
+- (void)showArticle:(ASArticle *)article;
 
 @end

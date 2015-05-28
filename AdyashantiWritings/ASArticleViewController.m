@@ -12,6 +12,7 @@
 #import "ASDetailNavigationBarViewController.h"
 #import <WebKit/WebKit.h>
 #import "NSString+MD5.h"
+#import "ASModel.h"
 
 @interface ASArticleViewController () <ADBannerViewDelegate, WKScriptMessageHandler>
 
@@ -25,16 +26,20 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    // Webview setup
     WKWebViewConfiguration *config = [[WKWebViewConfiguration alloc] init];
-    [config.userContentController addScriptMessageHandler:self name:@"pageLoaded"];
+    [config.userContentController addScriptMessageHandler:self name:@"pageLoaded"]; // Before running at JS scripts, the page must first fully load
     
     self.webView = [[WKWebView alloc] initWithFrame:self.webContainerView.bounds configuration:config];
-    [self.webView loadHTMLString:[self stringFromFilename:@"template" extension:@"html" folder:@"HTML/templates"] baseURL:nil];
-    
-    [self.webContainerView addSubview:self.webView];
+    [self.webView loadHTMLString:[ASModel sharedModel].htmlTemplate baseURL:nil];
 
-    // Autolayout
+    [self addObserver:self forKeyPath:@"article" options:(NSKeyValueObservingOptionNew | NSKeyValueObservingOptionInitial) context:nil]; // Article gets set by the tableview before presenting this VC, we observe the change and update the webview
+
+    
+    // Layout for webview
+    [self.webContainerView addSubview:self.webView];
     [self.webView setTranslatesAutoresizingMaskIntoConstraints:NO];
+
     WKWebView *webView = self.webView;
     [self.webContainerView addConstraints:[NSLayoutConstraint
                                constraintsWithVisualFormat:@"H:|-0-[webView]-0-|"
@@ -50,6 +55,7 @@
 
 - (void)dealloc {
     NSLog(@"deallocing detail");
+    [self removeObserver:self forKeyPath:@"article"];
 }
 
 - (void)navBarActionInvokedWithDictionary:(NSDictionary *)dictionary {
@@ -64,29 +70,19 @@
         [self.webView evaluateJavaScript:@"decreaseFontSize()" completionHandler:nil];
 
     } else if ([action isEqualToString:@"changeTheme"]) {
-        
+#warning implement this
     }
 }
 
-- (void)setupWebview {
-    [self refreshWithArticleNamed:@"01"];
-    [self addFooterIfNeeded];
-    // show/hide banner
-    // hide donation if needed
-}
-
-- (void)refreshWithArticleNamed:(NSString *)articleName {
-    NSString *article = [self stringFromFilename:articleName extension:@"html" folder:@"HTML/articles"];
-
-    NSString *addArticleCode = [NSString stringWithFormat:@"document.getElementById('content').innerHTML = \"%@\";", [self escapeString:article]];
-    [self.webView evaluateJavaScript:addArticleCode completionHandler:nil];
+- (void)changeArticleTo:(NSString *)article {
+    NSString *changeArticleCode = [NSString stringWithFormat:@"document.getElementById('content').innerHTML = \"%@\";", [self escapeString:article]];
+    [self.webView evaluateJavaScript:changeArticleCode completionHandler:^(id text, NSError *error) {
+        if (error != nil) NSLog(@"error: %@, %@", error, text);
+    }];
 }
 
 - (void)addFooterIfNeeded {
-    NSString *footer = [self stringFromFilename:@"footer" extension:@"html" folder:@"HTML/templates"];
-    NSString *md5 = [NSString md5HexDigest:footer];
-    NSLog(@"md5: %@", md5);
-    NSString *addFooterCode = [NSString stringWithFormat:@"document.getElementById('footer').innerHTML = \"%@\";", [self escapeString:footer]];
+    NSString *addFooterCode = [NSString stringWithFormat:@"document.getElementById('footer').innerHTML = \"%@\";", [self escapeString:[ASModel sharedModel].footer]];
     [self.webView evaluateJavaScript:addFooterCode completionHandler:nil];
 }
 
@@ -106,7 +102,10 @@
 
 - (void)userContentController:(WKUserContentController *)userContentController didReceiveScriptMessage:(WKScriptMessage *)message {
     if ([message.name isEqual:@"pageLoaded"]) {
-        [self setupWebview];
+        [self addFooterIfNeeded];
+        // show/hide banner
+        // hide donation if needed
+#warning implement this
     }
 }
 
@@ -133,6 +132,14 @@
             self.bannerHeightConstraint.constant = height;
             [self.view layoutIfNeeded]; // the constraint has been modified, tell the superview to lay out the subviews
         }];
+    }
+}
+
+#pragma mark - KVO
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+    if ([keyPath isEqualToString:@"article"]) {
+        if (self.article.html != nil) [self changeArticleTo:self.article.html];
     }
 }
 

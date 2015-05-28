@@ -14,5 +14,7 @@
 + (instancetype)sharedModel;
 
 @property NSArray *articles;
+@property NSString *htmlTemplate;
+@property NSString *footer;
 
 @end

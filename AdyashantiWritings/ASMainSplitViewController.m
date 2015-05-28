@@ -11,27 +11,31 @@
 
 @interface ASMainSplitViewController ()
 
+@property ASArticleViewController *articleVC;
+
 @end
 
 @implementation ASMainSplitViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.delegate = self;
+    for (id vc in self.viewControllers) {
+        if ([vc isKindOfClass:[ASArticleViewController class]] == true) {
+            self.articleVC = (ASArticleViewController *)vc;
+        }
+    }
     // Do any additional setup after loading the view.
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)showArticle:(ASArticle *)article {
+    self.articleVC.article = article;
+    [self showDetailViewController:self.articleVC sender:self];
 }
 
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+
 }
 
 
