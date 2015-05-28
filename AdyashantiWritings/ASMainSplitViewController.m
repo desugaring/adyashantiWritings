@@ -12,6 +12,7 @@
 @interface ASMainSplitViewController ()
 
 @property ASArticleViewController *articleVC;
+@property UIViewController *articlesListVC;
 
 @end
 
@@ -19,16 +20,17 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    for (id vc in self.viewControllers) {
-        if ([vc isKindOfClass:[ASArticleViewController class]] == true) {
-            self.articleVC = (ASArticleViewController *)vc;
-        }
-    }
+    self.preferredDisplayMode = UISplitViewControllerDisplayModePrimaryOverlay;
+    self.articlesListVC = (UIViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"TableVC"];
+    self.viewControllers = @[self.articlesListVC];
     // Do any additional setup after loading the view.
 }
 
 - (void)showArticle:(ASArticle *)article {
+    if (self.articleVC == nil) self.articleVC = [self.storyboard instantiateViewControllerWithIdentifier:@"ArticleVC"];
+
     self.articleVC.article = article;
+    self.articleVC.splitVC = self;
     [self showDetailViewController:self.articleVC sender:self];
 }
 

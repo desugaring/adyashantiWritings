@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "ASDetailNavigationBarViewController.h"
 #import "ASArticle.h"
+#import "ASMainSplitViewController.h"
 
 @interface ASArticleViewController : UIViewController <ASDetailNavigationBarDelegate>
 
@@ -18,5 +19,6 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bannerHeightConstraint;
 
 @property ASArticle *article;
+@property (weak) ASMainSplitViewController *splitVC;
 
 @end

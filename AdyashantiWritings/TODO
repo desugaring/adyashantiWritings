@@ -1,5 +1,7 @@
 Ver 1:
-- Has all the current adyashanti articles
-- Has ad on bototm
+- Fix splitviewVC
 - Has option to buy something to get rid of the ad
 - Color theme can be changed
+- Ad on bottom works properly with rotations
+- Has all the current adyashanti articles
+- Works on iPad

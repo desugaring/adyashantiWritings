@@ -13,12 +13,20 @@
 #import <WebKit/WebKit.h>
 #import "NSString+MD5.h"
 #import "ASModel.h"
+#import "ASMainSplitViewController.h"
+
+typedef NS_ENUM(NSInteger, ASArticleVCState) {
+    ASArticleVCStateNeedsRefresh,
+    ASArticleVCStateUpToDate,
+    ASArticleVCStateLoadingWebview
+};
 
 @interface ASArticleViewController () <ADBannerViewDelegate, WKScriptMessageHandler>
 
 @property ASAdBannerViewController *bannerVC;
 @property ASDetailNavigationBarViewController *navBarVC;
 @property WKWebView *webView;
+@property ASArticleVCState state;
 
 @end
 
@@ -26,6 +34,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.state = ASArticleVCStateLoadingWebview;
     // Webview setup
     WKWebViewConfiguration *config = [[WKWebViewConfiguration alloc] init];
     [config.userContentController addScriptMessageHandler:self name:@"pageLoaded"]; // Before running at JS scripts, the page must first fully load
@@ -61,7 +70,13 @@
 - (void)navBarActionInvokedWithDictionary:(NSDictionary *)dictionary {
     NSString *action = (NSString *)dictionary[@"action"];
     if ([action isEqualToString:@"goBack"]) {
-        [self dismissViewControllerAnimated:true completion:nil];
+        BOOL isModal = self.presentingViewController.presentedViewController == self;
+        if (isModal == true) {
+            [self dismissViewControllerAnimated:true completion:nil];
+        } else {
+            UIBarButtonItem *barButtonItem = self.splitVC.displayModeButtonItem;
+            [barButtonItem.target performSelector:barButtonItem.action];
+        }
 
     } else if ([action isEqualToString:@"increaseFontSize"]) {
         [self.webView evaluateJavaScript:@"increaseFontSize()" completionHandler:nil];
@@ -74,11 +89,19 @@
     }
 }
 
-- (void)changeArticleTo:(NSString *)article {
-    NSString *changeArticleCode = [NSString stringWithFormat:@"document.getElementById('content').innerHTML = \"%@\";", [self escapeString:article]];
-    [self.webView evaluateJavaScript:changeArticleCode completionHandler:^(id text, NSError *error) {
-        if (error != nil) NSLog(@"error: %@, %@", error, text);
-    }];
+- (void)refreshWebviewArticle {
+    if (self.state == ASArticleVCStateLoadingWebview) {
+        self.state = ASArticleVCStateNeedsRefresh;
+    } else {
+        NSString *changeArticleCode = [NSString stringWithFormat:@"document.getElementById('content').innerHTML = \"%@\";", [self escapeString:self.article.html]];
+        [self.webView evaluateJavaScript:changeArticleCode completionHandler:^(id text, NSError *error) {
+            if (error != nil)  {
+                NSLog(@"error: %@, %@", error, text);
+            } else {
+                self.state = ASArticleVCStateUpToDate;
+            }
+        }];
+    }
 }
 
 - (void)addFooterIfNeeded {
@@ -105,6 +128,10 @@
         [self addFooterIfNeeded];
         // show/hide banner
         // hide donation if needed
+        if (self.state == ASArticleVCStateNeedsRefresh) {
+            [self refreshWebviewArticle];
+        }
+
 #warning implement this
     }
 }
@@ -139,7 +166,7 @@
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
     if ([keyPath isEqualToString:@"article"]) {
-        if (self.article.html != nil) [self changeArticleTo:self.article.html];
+        if (self.article.html != nil) [self refreshWebviewArticle];
     }
 }
 
