@@ -52,8 +52,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     ASArticlesTableViewCell *cell = (ASArticlesTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     cell.textLabel.text = ((ASArticle *)self.articles[indexPath.row]).title;
-    cell.textLabel.textColor = self.theme.colorTheme.colors[ASColorThemeKeyTitle];
-    cell.backgroundColor = self.theme.colorTheme.colors[ASColorThemeKeyBackground];
+    cell.textLabel.textColor = self.theme.colorTheme.colors[ASColorThemeKeyParagraph];
     
     return cell;
 }
@@ -67,6 +66,9 @@
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
     if ([keyPath isEqualToString:@"type"]) {
+        [UIView animateWithDuration:0.25 animations:^{
+            self.tableView.backgroundColor = self.theme.colorTheme.colors[ASColorThemeKeyBackground];
+        }];
         [self.tableView reloadData];
     }
 }

@@ -102,31 +102,44 @@
     }
 }
 
+- (UIStatusBarStyle)preferredStatusBarStyle {
+    return (self.theme.colorTheme.type == ASColorThemeTypeBlack) ? UIStatusBarStyleLightContent : UIStatusBarStyleDefault;
+}
+
 #pragma mark - NavBar Buttons
 
 - (IBAction)sizeDown:(id)sender {
     [self.theme decreaseParagraphSize];
+    [[UIApplication sharedApplication] setStatusBarHidden:true];
+//    [[UIApplication sharedApplication] setStatusBarHidden:false];
 }
+
 - (IBAction)sizeUp:(id)sender {
     [self.theme increaseParagraphSize];
 }
+
 - (IBAction)themeChange:(id)sender {
     [self.theme changeColorThemeType];
-    UIColor *pColor = self.theme.colorTheme.colors[ASColorThemeKeyParagraph];
-    UIColor *tColor = self.theme.colorTheme.colors[ASColorThemeKeyTitle];
-    UIColor *sColor = self.theme.colorTheme.colors[ASColorThemeKeySecondary];
+//    UIColor *pColor = self.theme.colorTheme.colors[ASColorThemeKeyParagraph];
+//    UIColor *tColor = self.theme.colorTheme.colors[ASColorThemeKeyTitle];
+//    UIColor *sColor = self.theme.colorTheme.colors[ASColorThemeKeySecondary];
 
-    self.view.backgroundColor = sColor;
-    for (UIButton *button in self.navBarButtons) {
-        [button setTitleColor:tColor forState:UIControlStateNormal];
-    }
-    for (UILabel *label in self.navBarLabels) {
-        label.textColor = pColor;
-    }
+//    [UIView animateWithDuration:0.25 animations:^{
+//        self.view.backgroundColor = sColor;
+//        [self setNeedsStatusBarAppearanceUpdate];
+//    }];
+//    for (UIButton *button in self.navBarButtons) {
+//        [button setTitleColor:tColor forState:UIControlStateNormal];
+//    }
+//    for (UILabel *label in self.navBarLabels) {
+//        label.textColor = pColor;
+//    }
 }
+
 - (IBAction)learnMore:(id)sender {
     
 }
+
 - (IBAction)listOfArticles:(id)sender {
     [UIView animateWithDuration:0.25 animations:^{
         self.tableVC.view.center = self.articleVC.view.center;

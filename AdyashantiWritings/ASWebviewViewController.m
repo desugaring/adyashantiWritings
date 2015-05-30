@@ -79,8 +79,10 @@
 }
 
 - (void)setTheme {
+    UIColor *tColor = self.theme.colorTheme.colors[ASColorThemeKeyTitle];
     UIColor *bgColor = self.theme.colorTheme.colors[ASColorThemeKeyBackground];
     UIColor *pColor = self.theme.colorTheme.colors[ASColorThemeKeyParagraph];
+    [self.webView evaluateJavaScript:[NSString stringWithFormat:@"changeTitleColor(\"%@\")", [UIColor hexValuesFromUIColor:tColor]] completionHandler:nil];
     [self.webView evaluateJavaScript:[NSString stringWithFormat:@"changeBackgroundColor(\"%@\")", [UIColor hexValuesFromUIColor:bgColor]] completionHandler:nil];
     [self.webView evaluateJavaScript:[NSString stringWithFormat:@"changeParagraphColor(\"%@\")", [UIColor hexValuesFromUIColor:pColor]] completionHandler:nil];
 }
