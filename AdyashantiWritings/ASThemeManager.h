@@ -7,7 +7,20 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "ASColorTheme.h"
 
 @interface ASThemeManager : NSObject
+
+@property (readonly) ASColorTheme *colorTheme;
+@property (readonly) NSInteger paragraphSize;
+
++ (instancetype)sharedManager;
+
+- (NSInteger)increaseParagraphSize;
+- (NSInteger)decreaseParagraphSize;
+//- (void)setParagraphSizeTo:(NSUInteger)size;
+
+- (ASColorTheme *)changeColorThemeType;
+//- (void)changeColorThemeTo:(ASThemeManagerColorTheme)theme;
 
 @end

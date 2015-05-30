@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ASMainContainerViewController.h"
 
 @interface ASArticlesTableViewController : UITableViewController
+
+@property (weak) id<ASMainContainerDelegate> delegate;
 
 @end

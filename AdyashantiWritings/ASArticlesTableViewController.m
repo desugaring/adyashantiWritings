@@ -7,14 +7,16 @@
 //
 
 #import "ASArticlesTableViewController.h"
-#import "ASMainSplitViewController.h"
-#import "ASArticleViewController.h"
+#import "ASWebviewViewController.h"
+#import "ASArticlesTableViewCell.h"
 #import "ASModel.h"
+#import "ASThemeManager.h"
 
 @interface ASArticlesTableViewController ()
 
-@property ASArticleViewController *articleVC;
+@property ASWebviewViewController *articleVC;
 @property NSArray *articles;
+@property ASThemeManager *theme;
 
 @end
 
@@ -23,11 +25,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.articles = [ASModel sharedModel].articles;
+    self.theme = [ASThemeManager sharedManager];
+    [self.theme.colorTheme addObserver:self forKeyPath:@"type" options:NSKeyValueObservingOptionNew context:nil];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+}
+
+- (void)dealloc {
+    [self.theme.colorTheme removeObserver:self forKeyPath:@"type"];
 }
 
 #pragma mark - Table view data source
@@ -42,60 +50,25 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    ASArticlesTableViewCell *cell = (ASArticlesTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     cell.textLabel.text = ((ASArticle *)self.articles[indexPath.row]).title;
+    cell.textLabel.textColor = self.theme.colorTheme.colors[ASColorThemeKeyTitle];
+    cell.backgroundColor = self.theme.colorTheme.colors[ASColorThemeKeyBackground];
     
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    ASMainSplitViewController *mainSplitVC = (ASMainSplitViewController *)self.splitViewController;
-    [mainSplitVC showArticle:self.articles[indexPath.row]];
+    [self.delegate showArticle:self.articles[indexPath.row]];
 }
 
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
+#pragma mark - KVO
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+    if ([keyPath isEqualToString:@"type"]) {
+        [self.tableView reloadData];
+    }
 }
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

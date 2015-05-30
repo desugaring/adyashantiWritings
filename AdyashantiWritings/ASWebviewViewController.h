@@ -1,5 +1,5 @@
 //
-//  ASMainSplitViewController.h
+//  ASWebviewViewController.h
 //  AdyashantiWritings
 //
 //  Created by Alex Semenikhine on 2015-05-25.
@@ -8,9 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "ASArticle.h"
+#import "ASColorTheme.h"
+#import <WebKit/WebKit.h>
 
-@interface ASMainSplitViewController : UISplitViewController <UISplitViewControllerDelegate>
+@interface ASWebviewViewController : UIViewController
 
-- (void)showArticle:(ASArticle *)article;
+@property WKWebView *webView;
+@property ASArticle *article;
 
 @end

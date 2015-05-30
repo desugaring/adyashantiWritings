@@ -7,7 +7,6 @@
 //
 
 #import "AppDelegate.h"
-#import "ASMainSplitViewController.h"
 #import "ASArticlesTableViewController.h"
 
 @interface AppDelegate ()
