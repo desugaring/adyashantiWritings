@@ -52,14 +52,14 @@
     // Theme
     self.theme = [ASThemeManager sharedManager];
     [self.theme addObserver:self forKeyPath:@"paragraphSize" options:NSKeyValueObservingOptionNew context:nil];
-    [self.theme.colorTheme addObserver:self forKeyPath:@"type" options:(NSKeyValueObservingOptionNew) context:nil];
+    [self.theme.colorTheme addObserver:self forKeyPath:@"theme" options:(NSKeyValueObservingOptionNew) context:nil];
 }
 
 - (void)dealloc {
     NSLog(@"deallocing detail");
     [self removeObserver:self forKeyPath:@"article"];
     [self.theme removeObserver:self forKeyPath:@"paragraphSize"];
-    [self.theme.colorTheme removeObserver:self forKeyPath:@"type"];
+    [self.theme.colorTheme removeObserver:self forKeyPath:@"theme"];
 }
 
 - (void)setupWebview {
@@ -103,7 +103,7 @@
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
     if ([keyPath isEqualToString:@"article"]) {
         [self setArticle];
-    } else if ([keyPath isEqualToString:@"type"]) {
+    } else if ([keyPath isEqualToString:@"theme"]) {
         [self setTheme];
     } else if ([keyPath isEqualToString:@"paragraphSize"]) {
         [self setParagraphSize];

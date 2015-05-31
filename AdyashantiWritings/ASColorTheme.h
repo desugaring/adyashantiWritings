@@ -14,14 +14,15 @@ typedef NS_ENUM(NSInteger, ASColorThemeType) {
     ASColorThemeTypeBeige
 };
 
-static const NSString *ASColorThemeKeyBackground = @"background";
-static const NSString *ASColorThemeKeyParagraph = @"paragraph";
-static const NSString *ASColorThemeKeyTitle = @"title";
-static const NSString *ASColorThemeKeySecondary = @"secondary";
+static NSString *ASColorThemeKeyBackground = @"background";
+static NSString *ASColorThemeKeyBackgroundLight = @"backgroundLight";
+static NSString *ASColorThemeKeyParagraph = @"paragraph";
+static NSString *ASColorThemeKeyTitle = @"title";
+static NSString *ASColorThemeKeySecondary = @"secondary";
 
 @interface ASColorTheme : NSObject
 
-@property ASColorThemeType type;
+@property ASColorThemeType theme;
 @property (readonly) NSDictionary *colors;
 
 - (instancetype)initWithType:(ASColorThemeType)type;

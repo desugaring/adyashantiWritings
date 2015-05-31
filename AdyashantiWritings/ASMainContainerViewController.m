@@ -111,7 +111,7 @@
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle {
-    return (self.theme.colorTheme.type == ASColorThemeTypeBlack) ? UIStatusBarStyleLightContent : UIStatusBarStyleDefault;
+    return (self.theme.colorTheme.theme == ASColorThemeTypeBlack) ? UIStatusBarStyleLightContent : UIStatusBarStyleDefault;
 }
 
 #pragma mark - ASMainContainer Delegate
