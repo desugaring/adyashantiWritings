@@ -83,6 +83,11 @@
     function changeBackgroundColor(color) {
         bgStyle.setProperty("background-color", "#"+color, "");
     }
+
+    function changeArticleTo(article) {
+        document.getElementById('content').innerHTML = article;
+        window.scrollTo(0, 0);
+    }
     </script>
 </body>
 </html>

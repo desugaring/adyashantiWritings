@@ -70,8 +70,7 @@
 }
 
 - (void)setArticle {
-    NSString *changeArticleCode = [NSString stringWithFormat:@"document.getElementById('content').innerHTML = \"%@\";", [self escapeString:self.article.html]];
-    [self.webView evaluateJavaScript:changeArticleCode completionHandler:nil];
+    [self.webView evaluateJavaScript:[NSString stringWithFormat:@"changeArticleTo(\"%@\");", [self escapeString:self.article.html]] completionHandler:nil];
 }
 
 - (void)setParagraphSize {
@@ -88,8 +87,7 @@
 }
 
 - (void)setFooter {
-    NSString *addFooterCode = [NSString stringWithFormat:@"document.getElementById('footer').innerHTML = \"%@\";", [self escapeString:[ASModel sharedModel].footer]];
-    [self.webView evaluateJavaScript:addFooterCode completionHandler:nil];
+    [self.webView evaluateJavaScript:[NSString stringWithFormat:@"changeFooterTo(\"%@\");", [self escapeString:[ASModel sharedModel].footer]] completionHandler:nil];
 }
 
 #pragma mark - Webkit Javascript Handler

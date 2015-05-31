@@ -25,13 +25,32 @@
 @property ASAdBannerViewController *bannerVC;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *adBannerHeightConstraint;
 @property ASThemeManager *theme;
-@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *navBarButtons;
-@property (strong, nonatomic) IBOutletCollection(UILabel) NSArray *navBarLabels;
-
+@property (weak, nonatomic) IBOutlet UILabel *logo;
+@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *webviewButtons;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *buttonsRightOfLogoConstraint;
 
 @end
 
 @implementation ASMainContainerViewController
+
+- (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
+    [coordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext> context) {
+        self.logo.hidden = [self hideLogo];
+        self.logo.alpha = self.logo.hidden ? 0.0 : 1.0;
+
+        // If the logo is visible, place the buttons to the right of it,
+        // otherwise there's a 750 constraint that places them where the logo is
+        self.buttonsRightOfLogoConstraint.priority = self.logo.hidden ? 749 : 751;
+        [self.view setNeedsLayout];
+    } completion:^(id<UIViewControllerTransitionCoordinatorContext> context) {
+        //
+    }];
+}
+
+- (BOOL)hideLogo {
+    // If it's a phone, portrait mode and we're on a webview, hide the logo
+    return (self.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClassCompact && self.view.bounds.size.width < self.view.bounds.size.height && self.tableVC.view.hidden == true);
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -70,17 +89,6 @@
     self.theme = [ASThemeManager sharedManager];
 }
 
-#pragma mark - ASMainContainer Delegate
-
-- (void)showArticle:(ASArticle *)article {
-    self.articleVC.article = article;
-    [UIView animateWithDuration:0.25 animations:^{
-        self.tableVC.view.center = CGPointMake(self.tableVC.view.center.x, self.tableVC.view.center.y-self.tableVC.view.bounds.size.height);
-    } completion:^(BOOL finished) {
-//        if (finished == true) [self.tableVC.tableView reloadData];
-    }];
-}
-
 #pragma mark - AdBannerView Delegate
 
 - (void)bannerViewDidLoadAd:(ADBannerView *)banner {
@@ -106,7 +114,57 @@
     return (self.theme.colorTheme.type == ASColorThemeTypeBlack) ? UIStatusBarStyleLightContent : UIStatusBarStyleDefault;
 }
 
+#pragma mark - ASMainContainer Delegate
+
+- (void)showArticle:(ASArticle *)article {
+    self.articleVC.article = article;
+    for (UIButton *button in self.webviewButtons) {
+        button.hidden = false;
+        button.alpha = 0;
+    }
+    [UIView animateWithDuration:0.25 animations:^{
+        // Scroll the tableview offscreen
+        self.tableVC.view.center = CGPointMake(self.articleVC.view.center.x, self.articleVC.view.center.y-self.articleVC.view.bounds.size.height);
+        // If we're on a phone and in portrait mode, the logo is going to be replaced by buttons
+        if (self.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClassCompact && self.view.bounds.size.width < self.view.bounds.size.height) self.logo.alpha = 0;
+
+    } completion:^(BOOL finished) {
+        if (finished == true) {
+            self.tableVC.view.hidden = true;
+            if (self.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClassCompact && self.view.bounds.size.width < self.view.bounds.size.height) self.logo.hidden = true;
+            [UIView animateWithDuration:0.1 animations:^{
+                for (UIButton *button in self.webviewButtons) {
+                    button.alpha = 1;
+                }
+            }];
+        }
+
+    }];
+}
+
 #pragma mark - NavBar Buttons
+
+- (IBAction)listOfArticles:(id)sender {
+    self.logo.hidden = false;
+    // Position tableview right above the article, this may have gotten screwed up due to screen rotations
+    self.tableVC.view.center = CGPointMake(self.articleVC.view.center.x, self.articleVC.view.center.y-self.articleVC.view.bounds.size.height);
+    self.tableVC.view.hidden = false;
+    [UIView animateWithDuration:0.25 animations:^{
+        self.tableVC.view.center = self.articleVC.view.center;
+        for (UIButton *button in self.webviewButtons) {
+            button.alpha = 0;
+        }
+    } completion:^(BOOL finished) {
+        if (finished == true) {
+            for (UIButton *button in self.webviewButtons) {
+                button.hidden = true;
+            }
+            [UIView animateWithDuration:0.1 animations:^{
+                self.logo.alpha = 1;
+            }];
+        }
+    }];
+}
 
 - (IBAction)sizeDown:(id)sender {
     [self.theme decreaseParagraphSize];
@@ -120,30 +178,10 @@
 
 - (IBAction)themeChange:(id)sender {
     [self.theme changeColorThemeType];
-//    UIColor *pColor = self.theme.colorTheme.colors[ASColorThemeKeyParagraph];
-//    UIColor *tColor = self.theme.colorTheme.colors[ASColorThemeKeyTitle];
-//    UIColor *sColor = self.theme.colorTheme.colors[ASColorThemeKeySecondary];
-
-//    [UIView animateWithDuration:0.25 animations:^{
-//        self.view.backgroundColor = sColor;
-//        [self setNeedsStatusBarAppearanceUpdate];
-//    }];
-//    for (UIButton *button in self.navBarButtons) {
-//        [button setTitleColor:tColor forState:UIControlStateNormal];
-//    }
-//    for (UILabel *label in self.navBarLabels) {
-//        label.textColor = pColor;
-//    }
 }
 
 - (IBAction)learnMore:(id)sender {
-    
-}
 
-- (IBAction)listOfArticles:(id)sender {
-    [UIView animateWithDuration:0.25 animations:^{
-        self.tableVC.view.center = self.articleVC.view.center;
-    }];
 }
 
 @end
