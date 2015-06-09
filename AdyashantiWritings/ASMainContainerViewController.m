@@ -20,11 +20,14 @@
 
 @property (weak, nonatomic) IBOutlet UIView *mainContentView;
 @property (weak, nonatomic) IBOutlet UIView *bannerView;
+
 @property ASArticlesTableViewController *tableVC;
 @property ASWebviewViewController *articleVC;
 @property ASAdBannerViewController *bannerVC;
+
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *adBannerHeightConstraint;
 @property ASThemeManager *theme;
+
 @property (weak, nonatomic) IBOutlet UILabel *logo;
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *webviewButtons;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *buttonsRightOfLogoConstraint;
@@ -41,15 +44,10 @@
 
         // When the width is small, there's not enough space so we stick the buttons to the left and hide the logo
         self.buttonsRightOfLogoConstraint.priority = (self.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClassCompact && self.view.bounds.size.width < self.view.bounds.size.height) ? 749 : 751;
-        NSLog(@"priority: %@", @(self.buttonsRightOfLogoConstraint.priority));
         [self.view setNeedsLayout];
     } completion:^(id<UIViewControllerTransitionCoordinatorContext> context) {
         //
     }];
-}
-
-- (BOOL)hideLogo {
-    return (self.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClassCompact && self.view.bounds.size.width < self.view.bounds.size.height && self.tableVC.view.hidden == true);
 }
 
 - (void)viewDidLoad {

@@ -27,7 +27,7 @@
             [_parser parse];
         });
     }
-    // Wait for the parsing to finish, we want html and title to be ready before we return the object
+    // Wait for the parsing to finish, we want html and title to be ready before we return the object, if the html tags are broken, this'll never finish. This would not be used if the html was being fetched from an unreliable source (you know, teh internets :))
     dispatch_semaphore_wait(_parseSemaphore, DISPATCH_TIME_FOREVER);
     return self;
 }

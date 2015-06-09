@@ -16,10 +16,6 @@
     self.backgroundColor = [UIColor clearColor]; // iPad bug, cell will have white background color even though it is set to clearColor in the storyboard
 }
 
-- (void)prepareForReuse {
-
-}
-
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
     if (selected == true) {

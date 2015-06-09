@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		4F3F8B371B15274000E82580 /* TODO in Resources */ = {isa = PBXBuildFile; fileRef = 4F3F8B361B15274000E82580 /* TODO */; };
-		4F3F8B3A1B16824200E82580 /* NSString+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F3F8B391B16824200E82580 /* NSString+MD5.m */; };
 		4F3F8B3D1B1688AF00E82580 /* ASModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F3F8B3C1B1688AF00E82580 /* ASModel.m */; };
 		4F3F8B421B169E7300E82580 /* ASArticle.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F3F8B411B169E7300E82580 /* ASArticle.m */; };
 		4F6B85E11B17CE7500F3E96B /* ASMainContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F6B85E01B17CE7500F3E96B /* ASMainContainerViewController.m */; };
@@ -30,8 +29,6 @@
 
 /* Begin PBXFileReference section */
 		4F3F8B361B15274000E82580 /* TODO */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = TODO; path = AdyashantiWritings/TODO; sourceTree = "<group>"; };
-		4F3F8B381B16824200E82580 /* NSString+MD5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MD5.h"; sourceTree = "<group>"; };
-		4F3F8B391B16824200E82580 /* NSString+MD5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MD5.m"; sourceTree = "<group>"; };
 		4F3F8B3B1B1688AF00E82580 /* ASModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASModel.h; sourceTree = "<group>"; };
 		4F3F8B3C1B1688AF00E82580 /* ASModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASModel.m; sourceTree = "<group>"; };
 		4F3F8B401B169E7300E82580 /* ASArticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASArticle.h; sourceTree = "<group>"; };
@@ -81,7 +78,6 @@
 			children = (
 				4F6B85E91B19526700F3E96B /* Data */,
 				4F6B85EA1B19526B00F3E96B /* Theme */,
-				4F3F8B431B169E7600E82580 /* Helper */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -96,13 +92,6 @@
 				4F89B3B51B14FF77002E0840 /* AdBanner */,
 			);
 			name = View;
-			sourceTree = "<group>";
-		};
-		4F3F8B431B169E7600E82580 /* Helper */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Helper;
 			sourceTree = "<group>";
 		};
 		4F6B85E21B19315A00F3E96B /* Cell */ = {
@@ -160,8 +149,6 @@
 			children = (
 				4F6B85EB1B195A5A00F3E96B /* UIColor+HexColors.h */,
 				4F6B85EC1B195A5A00F3E96B /* UIColor+HexColors.m */,
-				4F3F8B381B16824200E82580 /* NSString+MD5.h */,
-				4F3F8B391B16824200E82580 /* NSString+MD5.m */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -303,7 +290,6 @@
 				4F3F8B421B169E7300E82580 /* ASArticle.m in Sources */,
 				4F89B3A81B13D047002E0840 /* ASThemeManager.m in Sources */,
 				4F89B3A51B13CEEF002E0840 /* ASAdBannerViewController.m in Sources */,
-				4F3F8B3A1B16824200E82580 /* NSString+MD5.m in Sources */,
 				4F89B3AD1B13EF14002E0840 /* ASWebviewViewController.m in Sources */,
 				4F6B85E51B19317200F3E96B /* ASArticlesTableViewCell.m in Sources */,
 				4F3F8B3D1B1688AF00E82580 /* ASModel.m in Sources */,

@@ -27,11 +27,6 @@
     self.articles = [ASModel sharedModel].articles;
     self.theme = [ASThemeManager sharedManager];
     [self.theme.colorTheme addObserver:self forKeyPath:@"theme" options:(NSKeyValueObservingOptionNew | NSKeyValueObservingOptionInitial) context:nil];
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (void)dealloc {
@@ -47,7 +42,6 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.articles.count;
 }
-
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     ASArticlesTableViewCell *cell = (ASArticlesTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
@@ -69,6 +63,7 @@
         [UIView animateWithDuration:0.25 animations:^{
             self.tableView.backgroundColor = self.theme.colorTheme.colors[ASColorThemeKeyBackground];
         }];
+        // The tableview needs to reload it's cells for them to reflect the new theme
         NSIndexPath *selectedRow = [self.tableView indexPathForSelectedRow];
         [self.tableView reloadData];
         [self.tableView selectRowAtIndexPath:selectedRow animated:false scrollPosition:UITableViewScrollPositionNone];

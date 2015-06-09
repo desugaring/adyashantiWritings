@@ -30,9 +30,9 @@
     // Layout for webview
     self.webView = [[WKWebView alloc] initWithFrame:self.view.bounds configuration:config];
     [self.view addSubview:self.webView];
-    [self.webView setTranslatesAutoresizingMaskIntoConstraints:NO];
 
     WKWebView *webView = self.webView;
+    [self.webView setTranslatesAutoresizingMaskIntoConstraints:NO];
     [self.view addConstraints:[NSLayoutConstraint
                                constraintsWithVisualFormat:@"H:|-0-[webView]-0-|"
                                options:NSLayoutFormatDirectionLeadingToTrailing
@@ -56,7 +56,6 @@
 }
 
 - (void)dealloc {
-    NSLog(@"deallocing detail");
     [self removeObserver:self forKeyPath:@"article"];
     [self.theme removeObserver:self forKeyPath:@"paragraphSize"];
     [self.theme.colorTheme removeObserver:self forKeyPath:@"theme"];
