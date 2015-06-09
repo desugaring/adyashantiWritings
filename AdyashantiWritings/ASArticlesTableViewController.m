@@ -26,7 +26,7 @@
     [super viewDidLoad];
     self.articles = [ASModel sharedModel].articles;
     self.theme = [ASThemeManager sharedManager];
-    [self.theme.colorTheme addObserver:self forKeyPath:@"type" options:NSKeyValueObservingOptionNew context:nil];
+    [self.theme.colorTheme addObserver:self forKeyPath:@"theme" options:(NSKeyValueObservingOptionNew | NSKeyValueObservingOptionInitial) context:nil];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -35,7 +35,7 @@
 }
 
 - (void)dealloc {
-    [self.theme.colorTheme removeObserver:self forKeyPath:@"type"];
+    [self.theme.colorTheme removeObserver:self forKeyPath:@"theme"];
 }
 
 #pragma mark - Table view data source
@@ -65,11 +65,13 @@
 #pragma mark - KVO
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-    if ([keyPath isEqualToString:@"type"]) {
+    if ([keyPath isEqualToString:@"theme"]) {
         [UIView animateWithDuration:0.25 animations:^{
             self.tableView.backgroundColor = self.theme.colorTheme.colors[ASColorThemeKeyBackground];
         }];
+        NSIndexPath *selectedRow = [self.tableView indexPathForSelectedRow];
         [self.tableView reloadData];
+        [self.tableView selectRowAtIndexPath:selectedRow animated:false scrollPosition:UITableViewScrollPositionNone];
     }
 }
 

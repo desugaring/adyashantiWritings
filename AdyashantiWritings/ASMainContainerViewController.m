@@ -35,12 +35,13 @@
 
 - (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
     [coordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext> context) {
-        self.logo.hidden = [self hideLogo];
+        // If it's a phone, portrait mode and we're on a webview instead of a tableview, hide the logo
+        self.logo.hidden = (self.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClassCompact && self.view.bounds.size.width < self.view.bounds.size.height && self.tableVC.view.hidden == true);
         self.logo.alpha = self.logo.hidden ? 0.0 : 1.0;
 
-        // If the logo is visible, place the buttons to the right of it,
-        // otherwise there's a 750 constraint that places them where the logo is
-        self.buttonsRightOfLogoConstraint.priority = self.logo.hidden ? 749 : 751;
+        // When the width is small, there's not enough space so we stick the buttons to the left and hide the logo
+        self.buttonsRightOfLogoConstraint.priority = (self.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClassCompact && self.view.bounds.size.width < self.view.bounds.size.height) ? 749 : 751;
+        NSLog(@"priority: %@", @(self.buttonsRightOfLogoConstraint.priority));
         [self.view setNeedsLayout];
     } completion:^(id<UIViewControllerTransitionCoordinatorContext> context) {
         //
@@ -48,7 +49,6 @@
 }
 
 - (BOOL)hideLogo {
-    // If it's a phone, portrait mode and we're on a webview, hide the logo
     return (self.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClassCompact && self.view.bounds.size.width < self.view.bounds.size.height && self.tableVC.view.hidden == true);
 }
 
@@ -94,10 +94,12 @@
 - (void)bannerViewDidLoadAd:(ADBannerView *)banner {
     CGSize idealBannerSize = [self.bannerVC.bannerView sizeThatFits:self.view.bounds.size];
     [self animateBannerContainerToHeightIfNeeded:idealBannerSize.height];
+    NSLog(@"banner success");
 }
 
 - (void)bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error {
     [self animateBannerContainerToHeightIfNeeded:0];
+    NSLog(@"banner error");
 }
 
 - (void)animateBannerContainerToHeightIfNeeded:(CGFloat)height {
@@ -108,10 +110,6 @@
             [self.view layoutIfNeeded]; // the constraint has been modified, tell the superview to lay out the subviews
         }];
     }
-}
-
-- (UIStatusBarStyle)preferredStatusBarStyle {
-    return (self.theme.colorTheme.theme == ASColorThemeTypeBlack) ? UIStatusBarStyleLightContent : UIStatusBarStyleDefault;
 }
 
 #pragma mark - ASMainContainer Delegate
@@ -168,8 +166,6 @@
 
 - (IBAction)sizeDown:(id)sender {
     [self.theme decreaseParagraphSize];
-    [[UIApplication sharedApplication] setStatusBarHidden:true];
-//    [[UIApplication sharedApplication] setStatusBarHidden:false];
 }
 
 - (IBAction)sizeUp:(id)sender {
@@ -181,7 +177,8 @@
 }
 
 - (IBAction)learnMore:(id)sender {
-
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Implement this" message:@"Too lazy :)" delegate:self cancelButtonTitle:@"Oh ok" otherButtonTitles: nil];
+    [alertView show];
 }
 
 @end

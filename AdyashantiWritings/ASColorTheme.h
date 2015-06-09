@@ -25,6 +25,6 @@ static NSString *ASColorThemeKeySecondary = @"secondary";
 @property ASColorThemeType theme;
 @property (readonly) NSDictionary *colors;
 
-- (instancetype)initWithType:(ASColorThemeType)type;
+- (instancetype)initWithType:(ASColorThemeType)theme;
 
 @end
