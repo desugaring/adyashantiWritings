@@ -7,7 +7,7 @@ Little app for browsing html files - increase/decrease fontsize, change color th
 - iPad support
 - talks to webview via javascript and back
 - no dependencies
-- written in objective-c
+- written in Objective-C
 
 ![1][1]
 ![2][2]
