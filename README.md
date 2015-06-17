@@ -4,6 +4,7 @@ Little app for browsing html files - increase/decrease fontsize, change color th
 
 ### Features:
 - uses WKWebivew, added in iOS8
+- iPad support
 - talks to webview via javascript and back
 - no dependencies
 - written in objective-c
