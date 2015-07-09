@@ -26,6 +26,7 @@
     WKWebViewConfiguration *config = [[WKWebViewConfiguration alloc] init];
     // Before running any JS scripts, the page must first fully load
     [config.userContentController addScriptMessageHandler:self name:@"pageLoaded"];
+    [config.userContentController addScriptMessageHandler:self name:@"presentModal"];
 
     // Layout for webview
     self.webView = [[WKWebView alloc] initWithFrame:self.view.bounds configuration:config];
@@ -86,14 +87,16 @@
 }
 
 - (void)setFooter {
-    [self.webView evaluateJavaScript:[NSString stringWithFormat:@"changeFooterTo(\"%@\");", [self escapeString:[ASModel sharedModel].footer]] completionHandler:nil];
+     [self.webView evaluateJavaScript:[NSString stringWithFormat:@"changeFooterTo(\"%@\");", [self escapeString:[ASModel sharedModel].footer]] completionHandler:nil];
 }
 
 #pragma mark - Webkit Javascript Handler
 
 - (void)userContentController:(WKUserContentController *)userContentController didReceiveScriptMessage:(WKScriptMessage *)message {
-    if ([message.name isEqual:@"pageLoaded"]) {
+    if ([message.name isEqualToString:@"pageLoaded"]) {
         [self setupWebview];
+    } else if ([message.name isEqualToString:@"presentModal"]) {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.adyashanti.org/index.php?file=writings"]];
     }
 }
 

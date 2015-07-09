@@ -175,7 +175,7 @@
 }
 
 - (IBAction)learnMore:(id)sender {
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Implement this" message:@"Too lazy :)" delegate:self cancelButtonTitle:@"Oh ok" otherButtonTitles: nil];
+    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Thank you!" message:@"All this button does is let the creator of the app know you like what you see :)" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles: nil];
     [alertView show];
 }
 
