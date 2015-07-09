@@ -198,10 +198,10 @@
         </scene>
     </scenes>
     <resources>
-        <image name="AboutIcon" width="81" height="81"/>
-        <image name="AddIcon" width="81" height="81"/>
-        <image name="ListOfIcon" width="81" height="81"/>
-        <image name="MinusIcon" width="81" height="81"/>
-        <image name="ThemeIcon" width="81" height="81"/>
+        <image name="AboutIcon" width="162" height="162"/>
+        <image name="AddIcon" width="162" height="162"/>
+        <image name="ListOfIcon" width="162" height="162"/>
+        <image name="MinusIcon" width="162" height="162"/>
+        <image name="ThemeIcon" width="162" height="162"/>
     </resources>
 </document>

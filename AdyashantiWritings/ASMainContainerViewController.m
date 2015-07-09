@@ -38,16 +38,20 @@
 
 - (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
     [coordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext> context) {
-        // If it's a phone, portrait mode and we're on a webview instead of a tableview, hide the logo
-        self.logo.hidden = (self.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClassCompact && self.view.bounds.size.width < self.view.bounds.size.height && self.tableVC.view.hidden == true);
-        self.logo.alpha = self.logo.hidden ? 0.0 : 1.0;
-
-        // When the width is small, there's not enough space so we stick the buttons to the left and hide the logo
-        self.buttonsRightOfLogoConstraint.priority = (self.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClassCompact && self.view.bounds.size.width < self.view.bounds.size.height) ? 749 : 751;
-        [self.view setNeedsLayout];
+        [self configureTopBanner];
     } completion:^(id<UIViewControllerTransitionCoordinatorContext> context) {
         //
     }];
+}
+
+- (void)configureTopBanner {
+    // If it's a phone, portrait mode and we're on a webview instead of a tableview, hide the logo
+    self.logo.hidden = (self.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClassCompact && self.view.bounds.size.width < self.view.bounds.size.height && self.tableVC.view.hidden == true);
+    self.logo.alpha = self.logo.hidden ? 0.0 : 1.0;
+
+    // When the width is small, there's not enough space so we stick the buttons to the left and hide the logo
+    self.buttonsRightOfLogoConstraint.priority = (self.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClassCompact && self.view.bounds.size.width < self.view.bounds.size.height) ? 749 : 751;
+    [self.view setNeedsLayout];
 }
 
 - (void)viewDidLoad {
@@ -85,6 +89,9 @@
 
     // Theme
     self.theme = [ASThemeManager sharedManager];
+
+    // Top banner
+    [self configureTopBanner];
 }
 
 #pragma mark - AdBannerView Delegate
